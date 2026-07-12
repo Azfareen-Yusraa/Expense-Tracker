@@ -1,3 +1,6 @@
+const themeToggle =
+document.getElementById("themeToggle");
+
 const balance = document.getElementById("balance");
 
 const income = document.getElementById("income");
@@ -10,6 +13,7 @@ const text = document.getElementById("text");
 const amount = document.getElementById("amount");
 
 const category = document.getElementById("category");
+const type = document.getElementById("type");
 
 const date = document.getElementById("date");
 
@@ -54,27 +58,44 @@ function(e){
 
 
 
-    const transaction = {
+    let transactionAmount = Number(amount.value);
 
 
-        id: Date.now(),
+if(type.value === "expense"){
+
+    transactionAmount = -Math.abs(transactionAmount);
+
+}
+else{
+
+    transactionAmount = Math.abs(transactionAmount);
+
+}
 
 
-        text: text.value,
+
+const transaction = {
 
 
-        amount: Number(amount.value),
+    id: Date.now(),
 
 
-        category: category.value,
+    text: text.value,
 
 
-        date: date.value
+    amount: transactionAmount,
 
 
-    };
+    type: type.value,
 
 
+    category: category.value,
+
+
+    date: date.value
+
+
+};
 
 
     transactions.push(transaction);
@@ -93,7 +114,9 @@ function(e){
     amount.value = "";
 
     category.value = "Food";
-
+    
+    type.value = "expense";
+    
     date.value = "";
 
 
@@ -138,11 +161,17 @@ function displayTransactions(){
 
         <small>
 
-        ${transaction.category}
-        |
-        ${transaction.date}
+${transaction.type ? transaction.type.toUpperCase() : ""}
 
-        </small>
+|
+
+${transaction.category}
+
+|
+
+${transaction.date}
+
+</small>
 
 
         </div>
@@ -151,8 +180,7 @@ function displayTransactions(){
 
         <span class="${transaction.amount > 0 ? "plus" : "minus"}">
 
-        ₹${transaction.amount}
-
+        ₹${Math.abs(transaction.amount)}
         </span>
 
 
@@ -476,3 +504,59 @@ function updateChart(){
 // Load Data When Page Opens
 
 displayTransactions();
+// Dark Mode
+
+themeToggle.addEventListener(
+"click",
+()=>{
+
+
+    document.body.classList.toggle("dark");
+
+
+    if(document.body.classList.contains("dark")){
+
+
+        localStorage.setItem(
+            "theme",
+            "dark"
+        );
+
+
+        themeToggle.innerHTML="☀️";
+
+
+    }
+
+    else{
+
+
+        localStorage.setItem(
+            "theme",
+            "light"
+        );
+
+
+        themeToggle.innerHTML="🌙";
+
+
+    }
+
+
+});
+
+
+
+
+// Load Theme
+
+if(localStorage.getItem("theme") === "dark"){
+
+
+    document.body.classList.add("dark");
+
+
+    themeToggle.innerHTML="☀️";
+
+
+}

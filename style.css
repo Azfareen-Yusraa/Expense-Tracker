@@ -341,3 +341,92 @@ canvas {
 
 
 }
+/* Header */
+
+.header {
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+
+/* Theme Button */
+
+#themeToggle {
+
+    width:auto;
+
+    padding:8px 12px;
+
+    border-radius:50%;
+
+}
+
+
+
+/* Dark Mode */
+
+body.dark {
+
+    background:#121212;
+
+}
+
+
+
+body.dark .container {
+
+    background:#1e1e1e;
+
+    color:white;
+
+}
+
+
+
+body.dark input,
+body.dark select {
+
+    background:#333;
+
+    color:white;
+
+    border-color:#555;
+
+}
+
+
+
+body.dark li {
+
+    background:#333;
+
+}
+
+
+
+body.dark li small {
+
+    color:#ccc;
+
+}
+
+
+
+body.dark .income {
+
+    background:#183d18;
+
+}
+
+
+
+body.dark .expense {
+
+    background:#4a1f1f;
+
+}
