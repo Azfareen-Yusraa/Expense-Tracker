@@ -503,8 +503,19 @@ function updateChart(){
 
 // Load Data When Page Opens
 
-displayTransactions();
-// Dark Mode
+// Load Theme
+
+if(localStorage.getItem("theme") === "dark"){
+
+    document.body.classList.add("dark");
+
+    themeToggle.innerHTML="☀️";
+
+}
+
+
+
+// Dark Mode Toggle
 
 themeToggle.addEventListener(
 "click",
@@ -547,7 +558,9 @@ themeToggle.addEventListener(
 
 
 
+// Load Transactions
 
+displayTransactions();
 // Load Theme
 
 if(localStorage.getItem("theme") === "dark"){

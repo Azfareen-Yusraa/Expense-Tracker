@@ -430,3 +430,9 @@ body.dark .expense {
     background:#4a1f1f;
 
 }
+body.dark h3,
+body.dark h1 {
+
+    color:white;
+
+}
