@@ -1,152 +1,343 @@
-*{
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
-}
+* {
 
-
-body{
-
-    background:#f4f4f4;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
+    box-sizing: border-box;
+    font-family: "Arial", sans-serif;
 
 }
 
 
 
-.container{
+body {
 
-    background:white;
-    width:400px;
-    padding:25px;
-    border-radius:10px;
-    box-shadow:0 0 15px gray;
+    background: linear-gradient(
+        135deg,
+        #667eea,
+        #764ba2
+    );
 
-}
+    min-height: 100vh;
 
+    display: flex;
 
+    justify-content: center;
 
-h1{
+    align-items: center;
 
-    text-align:center;
-
-}
-
-
-
-.balance-box{
-
-    text-align:center;
-    margin-bottom:20px;
+    padding: 20px;
 
 }
 
 
 
-.summary{
+/* Main Container */
 
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:20px;
+.container {
+
+    background: white;
+
+    width: 100%;
+
+    max-width: 450px;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+
+}
+
+
+
+/* Heading */
+
+h1 {
+
+    text-align: center;
+
+    margin-bottom: 20px;
+
+}
+
+
+
+/* Balance */
+
+.balance-box {
+
+    text-align: center;
+
+    margin-bottom: 20px;
+
+}
+
+
+#balance {
+
+    font-size: 32px;
+
+}
+
+
+
+/* Income Expense Cards */
+
+.summary {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
 
 }
 
 
 
 .income,
-.expense{
+.expense {
 
-    width:45%;
-    padding:10px;
-    text-align:center;
-    border-radius:8px;
+    width: 50%;
 
-}
+    padding: 15px;
 
+    text-align: center;
 
-.income{
-
-    background:#d4ffd4;
-    color:green;
-
-}
-
-
-.expense{
-
-    background:#ffd4d4;
-    color:red;
+    border-radius: 10px;
 
 }
 
 
 
-input{
+.income {
 
-    width:100%;
-    padding:10px;
-    margin:8px 0;
+    background: #d4ffd4;
 
-}
-
-
-
-button{
-
-    width:100%;
-    padding:10px;
-    background:black;
-    color:white;
-    border:none;
-    cursor:pointer;
+    color: green;
 
 }
 
 
 
-button:hover{
+.expense {
 
-    background:#333;
+    background: #ffd4d4;
 
-}
-
-
-
-li{
-
-    list-style:none;
-    padding:10px;
-    margin:10px 0;
-    background:#eee;
-    display:flex;
-    justify-content:space-between;
+    color: red;
 
 }
 
 
 
-.plus{
 
-    color:green;
+/* Form Inputs */
+
+input,
+select {
+
+    width: 100%;
+
+    padding: 12px;
+
+    margin: 8px 0;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    font-size: 15px;
 
 }
 
 
 
-.minus{
+input:focus,
+select:focus {
 
-    color:red;
+    outline: none;
+
+    border-color: #667eea;
 
 }
-select,
-input[type="date"]{
 
-    width:100%;
-    padding:10px;
-    margin:8px 0;
-    border:1px solid #ccc;
-    border-radius:5px;
+
+
+/* Button */
+
+button {
+
+    width: 100%;
+
+    padding: 12px;
+
+    margin-top: 10px;
+
+    background: #667eea;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+}
+
+
+
+button:hover {
+
+    background: #5563c1;
+
+}
+
+
+
+/* Transaction List */
+
+ul {
+
+    padding: 0;
+
+}
+
+
+
+li {
+
+    list-style: none;
+
+    background: #f8f8f8;
+
+    padding: 15px;
+
+    margin: 10px 0;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border-left: 5px solid #667eea;
+
+}
+
+
+
+li small {
+
+    color: gray;
+
+}
+
+
+
+
+/* Amount Colors */
+
+.plus {
+
+    color: green;
+
+    font-weight: bold;
+
+}
+
+
+
+.minus {
+
+    color: red;
+
+    font-weight: bold;
+
+}
+
+
+
+/* Delete Button */
+
+li button {
+
+    width: auto;
+
+    padding: 5px 10px;
+
+    margin-left: 10px;
+
+    background: red;
+
+    font-size: 12px;
+
+}
+
+
+
+li button:hover {
+
+    background: darkred;
+
+}
+
+
+
+/* Chart */
+
+.chart-container {
+
+    width: 100%;
+
+    margin-top: 25px;
+
+}
+
+
+
+canvas {
+
+    max-width: 100%;
+
+}
+
+
+
+
+
+/* Mobile Responsive */
+
+@media(max-width:500px) {
+
+
+    .container {
+
+        padding: 20px;
+
+    }
+
+
+
+    .summary {
+
+        flex-direction: column;
+
+    }
+
+
+
+    .income,
+    .expense {
+
+        width: 100%;
+
+    }
+
 
 }

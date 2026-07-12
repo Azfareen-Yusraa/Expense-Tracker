@@ -1,117 +1,186 @@
 const balance = document.getElementById("balance");
+
 const income = document.getElementById("income");
+
 const expense = document.getElementById("expense");
 
+
 const text = document.getElementById("text");
+
+const amount = document.getElementById("amount");
+
 const category = document.getElementById("category");
 
 const date = document.getElementById("date");
+
+
 const list = document.getElementById("list");
 
+const transactionForm = document.getElementById("transactionForm");
+
+
 let expenseChart;
+
+
+
 let transactions =
 JSON.parse(localStorage.getItem("transactions")) || [];
 
 
 
-function addTransaction(){
 
-    if(text.value === "" || amount.value === "")
-    {
-        alert("Please enter details");
+// Add Transaction
+
+transactionForm.addEventListener(
+"submit",
+function(e){
+
+
+    e.preventDefault();
+
+
+
+    if(
+        text.value === "" ||
+        amount.value === "" ||
+        date.value === ""
+    ){
+
+        alert("Please enter all details");
+
         return;
+
     }
+
 
 
     const transaction = {
 
-    id: Date.now(),
 
-    text: text.value,
+        id: Date.now(),
 
-    amount: Number(amount.value),
 
-    category: category.value,
+        text: text.value,
 
-    date: date.value
 
-};
+        amount: Number(amount.value),
+
+
+        category: category.value,
+
+
+        date: date.value
+
+
+    };
+
+
 
 
     transactions.push(transaction);
 
 
+
     updateLocalStorage();
 
 
     displayTransactions();
 
 
-    text.value="";
 
-amount.value="";
+    text.value = "";
 
-category.value="Food";
+    amount.value = "";
 
-date.value="";
+    category.value = "Food";
 
-}
-
+    date.value = "";
 
 
+});
+
+
+
+
+
+
+// Display Transactions
 
 function displayTransactions(){
 
-    list.innerHTML="";
+
+    list.innerHTML = "";
 
 
-    transactions.forEach(transaction=>{
+
+    transactions.forEach(transaction => {
 
 
-        const li=document.createElement("li");
+
+        const li =
+        document.createElement("li");
 
 
-        li.innerHTML =
 
-`
-
-<div>
-
-<strong>${transaction.text}</strong>
-
-<br>
-
-<small>
-${transaction.category} | ${transaction.date}
-</small>
-
-</div>
+        li.innerHTML = `
 
 
-<span class="${transaction.amount > 0 ? 'plus':'minus'}">
-
-₹${transaction.amount}
-
-</span>
+        <div>
 
 
-<button onclick="deleteTransaction(${transaction.id})">
+        <strong>
+        ${transaction.text}
+        </strong>
 
-X
 
-</button>
+        <br>
 
-`;
+
+        <small>
+
+        ${transaction.category}
+        |
+        ${transaction.date}
+
+        </small>
+
+
+        </div>
+
+
+
+        <span class="${transaction.amount > 0 ? "plus" : "minus"}">
+
+        ₹${transaction.amount}
+
+        </span>
+
+
+
+        <button onclick="deleteTransaction(${transaction.id})">
+
+        X
+
+        </button>
+
+
+        `;
+
 
 
         list.appendChild(li);
 
 
+
     });
 
 
-    updateValues();
+
+    updateSummary();
+
+
     updateChart();
+
 
 }
 
@@ -119,110 +188,176 @@ X
 
 
 
-function updateValues(){
+
+
+// Update Balance Summary
+
+function updateSummary(){
+
 
 
     const amounts =
     transactions.map(
-        transaction=>transaction.amount
+        transaction => transaction.amount
     );
+
 
 
     const total =
     amounts.reduce(
-        (sum,item)=>sum+item,0
+        (sum,item)=>sum + item,
+        0
     );
 
 
-    const incomes =
-    amounts.filter(
-        item=>item>0
+
+    const totalIncome =
+    amounts
+    .filter(
+        item => item > 0
     )
     .reduce(
-        (sum,item)=>sum+item,0
+        (sum,item)=>sum + item,
+        0
     );
 
 
 
-    const expenses =
-    amounts.filter(
-        item=>item<0
+    const totalExpense =
+    amounts
+    .filter(
+        item => item < 0
     )
     .reduce(
-        (sum,item)=>sum+item,0
+        (sum,item)=>sum + item,
+        0
     );
 
 
 
-    balance.innerText=
+    balance.innerText =
     `₹${total}`;
 
 
-    income.innerText=
-    `₹${incomes}`;
+
+    income.innerText =
+    `₹${totalIncome}`;
 
 
-    expense.innerText=
-    `₹${Math.abs(expenses)}`;
+
+    expense.innerText =
+    `₹${Math.abs(totalExpense)}`;
+
 
 }
 
 
 
+
+
+
+
+
+// Delete Transaction
 
 function deleteTransaction(id){
 
 
+
     transactions =
     transactions.filter(
-        transaction=>transaction.id!==id
+        transaction =>
+        transaction.id !== id
     );
+
 
 
     updateLocalStorage();
 
+
     displayTransactions();
+
+
 
 }
 
 
 
+
+
+
+
+
+// Local Storage
 
 function updateLocalStorage(){
 
+
     localStorage.setItem(
+
         "transactions",
+
         JSON.stringify(transactions)
+
     );
+
 
 }
 
-displayTransactions();
+
+
+
+
+
+
+
+// Expense Chart
+
 function updateChart(){
+
+
 
     const expenseCategories = {};
 
 
+
+
     transactions
-    .filter(transaction => transaction.amount < 0)
+
+    .filter(
+        transaction =>
+        transaction.amount < 0
+    )
+
+
     .forEach(transaction => {
+
 
 
         if(expenseCategories[transaction.category]){
 
-            expenseCategories[transaction.category] += 
-            Math.abs(transaction.amount);
+
+            expenseCategories[transaction.category]
+            += Math.abs(transaction.amount);
+
 
         }
+
         else{
 
-            expenseCategories[transaction.category] =
+
+            expenseCategories[transaction.category]
+            =
             Math.abs(transaction.amount);
 
+
         }
+
 
 
     });
+
+
 
 
 
@@ -230,28 +365,26 @@ function updateChart(){
     Object.keys(expenseCategories);
 
 
+
     const values =
     Object.values(expenseCategories);
 
 
 
-    const data = {
 
-        labels: labels,
 
-        datasets: [
+    const chartCanvas =
+    document.getElementById("expenseChart");
 
-            {
 
-                label:"Expenses",
 
-                data:values
+    if(!chartCanvas){
 
-            }
+        return;
 
-        ]
+    }
 
-    };
+
 
 
 
@@ -263,21 +396,83 @@ function updateChart(){
 
 
 
-    const ctx =
-    document
-    .getElementById("expenseChart")
-    .getContext("2d");
+
+    if(labels.length === 0){
+
+        return;
+
+    }
+
+
 
 
 
     expenseChart =
-    new Chart(ctx, {
+    new Chart(
+        chartCanvas,
+        {
+
 
         type:"pie",
 
-        data:data
+
+        data:{
+
+
+            labels:labels,
+
+
+            datasets:[
+
+                {
+
+
+                label:"Expenses",
+
+
+                data:values,
+
+
+                backgroundColor:[
+
+                    "#ff6384",
+
+                    "#36a2eb",
+
+                    "#ffce56",
+
+                    "#4bc0c0",
+
+                    "#9966ff",
+
+                    "#ff9f40"
+
+
+                ]
+
+
+                }
+
+
+            ]
+
+
+        }
+
+
 
     });
 
 
+
 }
+
+
+
+
+
+
+
+// Load Data When Page Opens
+
+displayTransactions();
