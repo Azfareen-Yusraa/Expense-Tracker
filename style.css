@@ -1,0 +1,142 @@
+*{
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+
+body{
+
+    background:#f4f4f4;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+
+}
+
+
+
+.container{
+
+    background:white;
+    width:400px;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 0 15px gray;
+
+}
+
+
+
+h1{
+
+    text-align:center;
+
+}
+
+
+
+.balance-box{
+
+    text-align:center;
+    margin-bottom:20px;
+
+}
+
+
+
+.summary{
+
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:20px;
+
+}
+
+
+
+.income,
+.expense{
+
+    width:45%;
+    padding:10px;
+    text-align:center;
+    border-radius:8px;
+
+}
+
+
+.income{
+
+    background:#d4ffd4;
+    color:green;
+
+}
+
+
+.expense{
+
+    background:#ffd4d4;
+    color:red;
+
+}
+
+
+
+input{
+
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+
+}
+
+
+
+button{
+
+    width:100%;
+    padding:10px;
+    background:black;
+    color:white;
+    border:none;
+    cursor:pointer;
+
+}
+
+
+
+button:hover{
+
+    background:#333;
+
+}
+
+
+
+li{
+
+    list-style:none;
+    padding:10px;
+    margin:10px 0;
+    background:#eee;
+    display:flex;
+    justify-content:space-between;
+
+}
+
+
+
+.plus{
+
+    color:green;
+
+}
+
+
+
+.minus{
+
+    color:red;
+
+}
