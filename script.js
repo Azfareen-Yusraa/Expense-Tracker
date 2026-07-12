@@ -3,8 +3,9 @@ const income = document.getElementById("income");
 const expense = document.getElementById("expense");
 
 const text = document.getElementById("text");
-const amount = document.getElementById("amount");
+const category = document.getElementById("category");
 
+const date = document.getElementById("date");
 const list = document.getElementById("list");
 
 
@@ -24,13 +25,17 @@ function addTransaction(){
 
     const transaction = {
 
-        id:Date.now(),
+    id: Date.now(),
 
-        text:text.value,
+    text: text.value,
 
-        amount:Number(amount.value)
+    amount: Number(amount.value),
 
-    };
+    category: category.value,
+
+    date: date.value
+
+};
 
 
     transactions.push(transaction);
@@ -43,7 +48,12 @@ function addTransaction(){
 
 
     text.value="";
-    amount.value="";
+
+amount.value="";
+
+category.value="Food";
+
+date.value="";
 
 }
 
@@ -61,22 +71,37 @@ function displayTransactions(){
         const li=document.createElement("li");
 
 
-        li.innerHTML=
+        li.innerHTML =
 
-        `
-        ${transaction.text}
+`
 
-        <span class="${transaction.amount>0?'plus':'minus'}">
+<div>
 
-        ₹${transaction.amount}
+<strong>${transaction.text}</strong>
 
-        </span>
+<br>
 
-        <button onclick="deleteTransaction(${transaction.id})">
-        X
-        </button>
+<small>
+${transaction.category} | ${transaction.date}
+</small>
 
-        `;
+</div>
+
+
+<span class="${transaction.amount > 0 ? 'plus':'minus'}">
+
+₹${transaction.amount}
+
+</span>
+
+
+<button onclick="deleteTransaction(${transaction.id})">
+
+X
+
+</button>
+
+`;
 
 
         list.appendChild(li);
