@@ -20,6 +20,12 @@ const date = document.getElementById("date");
 
 const list = document.getElementById("list");
 
+const search = document.getElementById("search");
+
+const filterType = document.getElementById("filterType");
+
+const filterCategory = document.getElementById("filterCategory");
+
 const transactionForm = document.getElementById("transactionForm");
 
 
@@ -129,86 +135,80 @@ const transaction = {
 
 // Display Transactions
 
-function displayTransactions(){
-
+function displayTransactions() {
 
     list.innerHTML = "";
 
+    const filteredTransactions = transactions.filter(transaction => {
 
+        const matchesSearch =
+            transaction.text.toLowerCase().includes(search.value.toLowerCase());
 
-    transactions.forEach(transaction => {
+        const matchesType =
+            filterType.value === "all" ||
+            transaction.type === filterType.value;
 
+        const matchesCategory =
+            filterCategory.value === "all" ||
+            transaction.category === filterCategory.value;
 
-
-        const li =
-        document.createElement("li");
-
-
-
-        li.innerHTML = `
-
-
-        <div>
-
-
-        <strong>
-        ${transaction.text}
-        </strong>
-
-
-        <br>
-
-
-        <small>
-
-${transaction.type ? transaction.type.toUpperCase() : ""}
-
-|
-
-${transaction.category}
-
-|
-
-${transaction.date}
-
-</small>
-
-
-        </div>
-
-
-
-        <span class="${transaction.amount > 0 ? "plus" : "minus"}">
-
-        ₹${Math.abs(transaction.amount)}
-        </span>
-
-
-
-        <button onclick="deleteTransaction(${transaction.id})">
-
-        X
-
-        </button>
-
-
-        `;
-
-
-
-        list.appendChild(li);
-
-
+        return matchesSearch && matchesType && matchesCategory;
 
     });
 
+    filteredTransactions.forEach(transaction => {
 
+        const li = document.createElement("li");
+
+        li.innerHTML = `
+
+        <div class="transaction-info">
+
+            <strong>${transaction.text}</strong>
+
+            <br>
+
+            <small>
+
+                ${transaction.type ? transaction.type.toUpperCase() : ""}
+
+                |
+
+                ${transaction.category}
+
+                |
+
+                ${transaction.date}
+
+            </small>
+
+        </div>
+
+        <div class="transaction-actions">
+
+            <span class="${transaction.amount > 0 ? "plus" : "minus"}">
+
+                ₹${Math.abs(transaction.amount)}
+
+            </span>
+
+            <button onclick="deleteTransaction(${transaction.id})">
+
+                X
+
+            </button>
+
+        </div>
+
+        `;
+
+        list.appendChild(li);
+
+    });
 
     updateSummary();
 
-
     updateChart();
-
 
 }
 
@@ -573,3 +573,8 @@ if(localStorage.getItem("theme") === "dark"){
 
 
 }
+search.addEventListener("input", displayTransactions);
+
+filterType.addEventListener("change", displayTransactions);
+
+filterCategory.addEventListener("change", displayTransactions);
