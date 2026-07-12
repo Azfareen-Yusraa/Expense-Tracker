@@ -8,7 +8,7 @@ const category = document.getElementById("category");
 const date = document.getElementById("date");
 const list = document.getElementById("list");
 
-
+let expenseChart;
 let transactions =
 JSON.parse(localStorage.getItem("transactions")) || [];
 
@@ -111,6 +111,7 @@ X
 
 
     updateValues();
+    updateChart();
 
 }
 
@@ -196,6 +197,87 @@ function updateLocalStorage(){
 
 }
 
-
-
 displayTransactions();
+function updateChart(){
+
+    const expenseCategories = {};
+
+
+    transactions
+    .filter(transaction => transaction.amount < 0)
+    .forEach(transaction => {
+
+
+        if(expenseCategories[transaction.category]){
+
+            expenseCategories[transaction.category] += 
+            Math.abs(transaction.amount);
+
+        }
+        else{
+
+            expenseCategories[transaction.category] =
+            Math.abs(transaction.amount);
+
+        }
+
+
+    });
+
+
+
+    const labels =
+    Object.keys(expenseCategories);
+
+
+    const values =
+    Object.values(expenseCategories);
+
+
+
+    const data = {
+
+        labels: labels,
+
+        datasets: [
+
+            {
+
+                label:"Expenses",
+
+                data:values
+
+            }
+
+        ]
+
+    };
+
+
+
+    if(expenseChart){
+
+        expenseChart.destroy();
+
+    }
+
+
+
+    const ctx =
+    document
+    .getElementById("expenseChart")
+    .getContext("2d");
+
+
+
+    expenseChart =
+    new Chart(ctx, {
+
+        type:"pie",
+
+        data:data
+
+    });
+
+
+}
