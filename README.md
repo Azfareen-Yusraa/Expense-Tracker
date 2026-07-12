@@ -30,7 +30,7 @@ A simple Expense Tracker web application built using HTML, CSS and JavaScript.
 
 ## Screenshot
 
-(Add your project screenshot here)
+screenshot.png
 
 
 ## Author
