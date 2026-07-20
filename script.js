@@ -320,24 +320,23 @@ function updateSummary(){
 
 // Delete Transaction
 
-function deleteTransaction(id){
+function deleteTransaction(id) {
 
-
-
-    transactions =
-    transactions.filter(
-        transaction =>
-        transaction.id !== id
+    const confirmDelete = confirm(
+        "Are you sure you want to delete this transaction?"
     );
 
+    if (!confirmDelete) {
+        return;
+    }
 
+    transactions = transactions.filter(
+        transaction => transaction.id !== id
+    );
 
     updateLocalStorage();
 
-
     displayTransactions();
-
-
 
 }
 
