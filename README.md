@@ -1,88 +1,185 @@
-# Expense Tracker 💰
+# 💰 Expense Tracker
 
-A responsive web-based **Expense Tracker application** built using **HTML, CSS, and JavaScript**.
+A modern and responsive **Expense Tracker** built using **HTML, CSS, and JavaScript**. This application helps users manage their income and expenses, track their financial balance, and visualize spending through interactive charts.
 
-This application helps users manage their daily income and expenses, calculate their current balance, and save transaction data using **Browser Local Storage**.
+---
 
+## 📸 Screenshots
+
+### Home
+
+![Home](images/home.png)
+
+### Dark Mode
+
+![Dark Mode](images/dark-mode.png)
+
+### Search & Filters
+
+![Search](images/search-filter.png)
+
+### Expense Chart
+
+![Chart](images/chart.png)
 ---
 
 ## 🚀 Live Demo
 
-[View Expense Tracker](https://azfareen-yusraa.github.io/Expense-Tracker/)
+**GitHub Pages:**
+
+https://azfareen-yusraa.github.io/Expense-Tracker/
 
 ---
 
 ## ✨ Features
 
-* ✅ Add income transactions
-* ✅ Add expense transactions
-* ✅ Delete transactions
-* ✅ Automatically calculate total balance
-* ✅ Display total income
-* ✅ Display total expenses
-* ✅ Store data using Local Storage
-* ✅ Data remains saved after refreshing the page
-* ✅ Responsive user interface
+* ➕ Add Income & Expense Transactions
+* ✏️ Edit Existing Transactions
+* 🗑️ Delete Transactions
+* 🔍 Search Transactions
+* 🏷️ Filter by Transaction Type
+* 📂 Filter by Category
+* 📅 Date Selection
+* 💰 Automatic Balance Calculation
+* 📊 Expense Analysis using Chart.js
+* 🌙 Dark Mode with Theme Persistence
+* 💾 Local Storage Support
+* 📱 Fully Responsive Design
+* ⌨️ Keyboard Shortcuts
+
+  * **Ctrl + Enter** → Submit Transaction
+  * **Esc** → Cancel Editing
+* ♿ Accessibility Improvements
 
 ---
 
-## 🛠️ Technologies Used
+## 🛠️ Built With
 
 * HTML5
 * CSS3
-* JavaScript
-* Local Storage
-
----
-
-## 📸 Screenshot
-
-![Expense Tracker Screenshot](./screenshot.png)
+* JavaScript (ES6+)
+* Chart.js
+* Local Storage API
 
 ---
 
 ## 📂 Project Structure
 
 ```
-Expense-Tracker
+Expense-Tracker/
 │
-├── index.html        # Main HTML structure
-├── style.css         # Styling and layout
-├── script.js         # Application logic
-├── screenshot.png    # Project preview image
-├── README.md         # Project documentation
-└── .gitignore        # Ignored files
+├── index.html
+├── style.css
+├── script.js
+├── README.md
+│
+└── images/
+    ├── favicon.png
+    └── screenshot.png
 ```
 
 ---
 
-## ▶️ How to Run Locally
+## 📖 How to Run
 
-Follow these steps to run the project on your computer:
-
-### 1. Clone the repository
+1. Clone the repository
 
 ```bash
 git clone https://github.com/Azfareen-Yusraa/Expense-Tracker.git
 ```
 
-### 2. Open the project folder
+2. Open the project folder.
 
-```bash
-cd Expense-Tracker
-```
+3. Open `index.html` in your browser.
 
-### 3. Run the application
-
-Open `index.html` in your browser or use the **Live Server** extension in VS Code.
+No installation is required.
 
 ---
 
-## 💾 Data Storage
+## 🎯 Features in Detail
 
-This project uses **Local Storage** to save transaction data directly in the browser.
+### 💵 Transaction Management
 
-Your transactions remain available even after refreshing or reopening the website.
+* Add new transactions
+* Edit existing transactions
+* Delete transactions
+* Categorize transactions
+* Track income and expenses separately
+
+### 📈 Financial Summary
+
+* Total Balance
+* Total Income
+* Total Expenses
+
+### 🔍 Smart Filtering
+
+* Search by description
+* Filter by transaction type
+* Filter by category
+
+### 📊 Expense Analysis
+
+Interactive Pie Chart showing expenses grouped by category.
+
+### 🌙 Dark Mode
+
+* One-click theme switching
+* Automatically remembers the selected theme
+
+### 💾 Data Persistence
+
+All transactions and preferences are stored using the browser's Local Storage.
+
+---
+
+## 📱 Responsive Design
+
+The application works smoothly on:
+
+* 💻 Desktop
+* 💼 Laptop
+* 📱 Mobile
+* 📲 Tablet
+
+---
+
+## 📚 What I Learned
+
+While building this project, I practiced:
+
+* DOM Manipulation
+* Event Handling
+* JavaScript Arrays
+* Objects
+* Local Storage
+* CRUD Operations
+* Responsive Web Design
+* CSS Variables
+* Dark Mode Implementation
+* Data Visualization with Chart.js
+* Accessibility Best Practices
+
+---
+
+## 🔮 Future Improvements
+
+* Export transactions to CSV
+* Monthly Expense Reports
+* Budget Planner
+* Multiple Currency Support
+* User Authentication
+* Cloud Data Synchronization
+* Recurring Transactions
+* Expense Analytics Dashboard
+
+---
+
+## 🤝 Contributing
+
+Contributions, suggestions, and improvements are welcome.
+
+Feel free to fork this repository and create a pull request.
 
 ---
 
@@ -93,12 +190,13 @@ Your transactions remain available even after refreshing or reopening the websit
 GitHub:
 https://github.com/Azfareen-Yusraa
 
+LinkedIn:
+https://www.linkedin.com/in/yusraa-azfareen/
+
 ---
 
-## 📌 Future Improvements
+## ⭐ Support
 
-* Add expense categories
-* Add charts and analytics
-* Add dark mode
-* Add transaction date tracking
-* Add backend database support
+If you found this project helpful, consider giving it a ⭐ on GitHub.
+
+It helps others discover the project and motivates future improvements.
