@@ -617,23 +617,13 @@ themeToggle.addEventListener(
 // Load Transactions
 
 displayTransactions();
-// Load Theme
 
-if(localStorage.getItem("theme") === "dark"){
-
-
-    document.body.classList.add("dark");
-
-
-    themeToggle.innerHTML="☀️";
-
-
-}
 search.addEventListener("input", displayTransactions);
 
 filterType.addEventListener("change", displayTransactions);
 
 filterCategory.addEventListener("change", displayTransactions);
+
 // Cancel Edit
 
 cancelEdit.addEventListener("click", () => {
