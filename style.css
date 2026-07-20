@@ -1,471 +1,134 @@
-* {
+/* ===========================
+   Global Styles
+=========================== */
 
+*,
+*::before,
+*::after {
     box-sizing: border-box;
-    font-family: "Arial", sans-serif;
+}
+
+:root {
+
+    --primary: #667eea;
+    --primary-hover: #5563c1;
+
+    --success-bg: #d4ffd4;
+    --success-text: #0f8a0f;
+
+    --danger-bg: #ffd4d4;
+    --danger-text: #c00000;
+
+    --background:
+        linear-gradient(
+            135deg,
+            #667eea,
+            #764ba2
+        );
+
+    --card: #ffffff;
+    --text: #222;
+    --border: #dddddd;
+
+    --shadow:
+        0 10px 25px rgba(0,0,0,.15);
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    margin:0;
+
+    font-family:"Poppins",sans-serif;
+
+    background:var(--background);
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    padding:30px 20px;
+
+    overflow-x:hidden;
+
+    transition:
+        background .3s ease,
+        color .3s ease;
 
 }
 
 
 
-body {
+/* ===========================
+   Main Container
+=========================== */
 
-    background: linear-gradient(
-        135deg,
-        #667eea,
-        #764ba2
-    );
+.container{
 
-    min-height: 100vh;
+    width:100%;
 
-    display: flex;
+    max-width:450px;
 
-    justify-content: center;
+    background:var(--card);
 
-    align-items: center;
+    color:var(--text);
 
-    padding: 20px;
+    border-radius:18px;
 
-}
+    padding:25px;
 
+    box-shadow:var(--shadow);
 
+    animation:fadeIn .45s ease;
 
-/* Main Container */
-
-.container {
-
-    background: white;
-
-    width: 100%;
-
-    max-width: 450px;
-
-    padding: 25px;
-
-    border-radius: 15px;
-
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transition:
+        background .3s ease,
+        color .3s ease,
+        transform .25s ease;
 
 }
 
 
 
-/* Heading */
+@keyframes fadeIn{
 
-h1 {
+    from{
 
-    text-align: center;
+        opacity:0;
 
-    margin-bottom: 20px;
-
-}
-
-
-
-/* Balance */
-
-.balance-box {
-
-    text-align: center;
-
-    margin-bottom: 20px;
-
-}
-
-
-#balance {
-
-    font-size: 32px;
-
-}
-
-
-
-/* Income Expense Cards */
-
-.summary {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    gap: 15px;
-
-    margin-bottom: 20px;
-
-}
-
-
-
-.income,
-.expense {
-
-    width: 50%;
-
-    padding: 15px;
-
-    text-align: center;
-
-    border-radius: 10px;
-
-}
-
-
-
-.income {
-
-    background: #d4ffd4;
-
-    color: green;
-
-}
-
-
-
-.expense {
-
-    background: #ffd4d4;
-
-    color: red;
-
-}
-
-
-
-
-/* Form Inputs */
-
-input,
-select {
-
-    width: 100%;
-
-    padding: 12px;
-
-    margin: 8px 0;
-
-    border: 1px solid #ddd;
-
-    border-radius: 8px;
-
-    font-size: 15px;
-
-}
-
-
-
-input:focus,
-select:focus {
-
-    outline: none;
-
-    border-color: #667eea;
-
-}
-
-
-
-/* Button */
-
-button {
-
-    width: 100%;
-
-    padding: 12px;
-
-    margin-top: 10px;
-
-    background: #667eea;
-
-    color: white;
-
-    border: none;
-
-    border-radius: 8px;
-
-    cursor: pointer;
-
-    font-size: 16px;
-
-}
-
-
-
-button:hover {
-
-    background: #5563c1;
-
-}
-
-
-
-/* Transaction List */
-
-ul {
-
-    padding: 0;
-
-}
-
-
-
-li {
-
-    list-style: none;
-
-    background: #f8f8f8;
-
-    padding: 15px;
-
-    margin: 10px 0;
-
-    border-radius: 10px;
-
-    border-left: 5px solid #667eea;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    gap: 10px;
-
-    transition: all 0.25s ease;
-
-}
-
-li:hover {
-
-    transform: translateY(-2px);
-
-    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
-
-}
-
-.transaction-info {
-
-    flex: 1;
-
-    word-break: break-word;
-
-}
-
-.transaction-actions {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-}
-
-
-li small {
-
-    color: gray;
-
-}
-
-
-
-
-/* Amount Colors */
-
-.plus {
-
-    color: green;
-
-    font-weight: bold;
-
-}
-
-
-
-.minus {
-
-    color: red;
-
-    font-weight: bold;
-
-}
-
-
-
-/* Delete Button */
-
-li button {
-
-    width: auto;
-
-    padding: 5px 10px;
-
-    margin-left: 10px;
-
-    background: red;
-
-    font-size: 12px;
-
-}
-
-
-
-li button:hover {
-
-    background: darkred;
-
-}
-
-
-
-/* Chart */
-
-.chart-container {
-
-    width: 100%;
-
-    margin-top: 25px;
-
-}
-
-
-
-canvas {
-
-    max-width: 100%;
-
-}
-
-
-
-/* Filters */
-
-.filters {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 10px;
-
-    margin-bottom: 20px;
-
-}
-/* Empty State */
-
-#emptyMessage {
-
-    display: none;
-
-    text-align: center;
-
-    padding: 25px;
-
-    margin-bottom: 20px;
-
-    border: 2px dashed #ddd;
-
-    border-radius: 10px;
-
-    background: #fafafa;
-
-    color: #666;
-
-    line-height: 1.8;
-
-    font-size: 15px;
-
-}
-
-body.dark #emptyMessage {
-
-    background: #2b2b2b;
-
-    border-color: #555;
-
-    color: #ccc;
-
-}
-.filters input,
-.filters select {
-
-    margin: 0;
-
-}
-.form-buttons {
-
-    display: flex;
-
-    gap: 10px;
-
-    margin-top: 10px;
-
-}
-
-.form-buttons button {
-
-    flex: 1;
-
-}
-
-#cancelEdit {
-
-    background: #888;
-
-}
-
-#cancelEdit:hover {
-
-    background: #666;
-
-}
-/* Mobile Responsive */
-
-@media(max-width:500px) {
-
-
-    .container {
-
-        padding: 20px;
+        transform:
+            translateY(20px);
 
     }
 
+    to{
 
+        opacity:1;
 
-    .summary {
-
-        flex-direction: column;
-
-    }
-
-
-
-    .income,
-    .expense {
-
-        width: 100%;
-
-    }
-    .header {
-
-        flex-direction: column;
-
-        gap: 10px;
-
-    }
-
-    .transaction-actions {
-
-        flex-direction: column;
-
-        align-items: flex-end;
+        transform:
+            translateY(0);
 
     }
 
 }
-/* Header */
 
-.header {
+
+
+/* ===========================
+   Header
+=========================== */
+
+.header{
 
     display:flex;
 
@@ -473,88 +136,910 @@ body.dark #emptyMessage {
 
     align-items:center;
 
+    gap:15px;
+
+    margin-bottom:20px;
+
+}
+
+.header h1{
+
+    margin:0;
+
+    font-size:28px;
+
+    font-weight:600;
+
 }
 
 
-/* Theme Button */
 
-#themeToggle {
+/* ===========================
+   Theme Button
+=========================== */
 
-    width:auto;
+#themeToggle{
 
-    padding:8px 12px;
+    width:44px;
+
+    height:44px;
+
+    padding:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border:none;
 
     border-radius:50%;
 
+    background:var(--primary);
+
+    color:#fff;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    transition:
+        transform .2s,
+        background .3s;
+
+}
+
+#themeToggle:hover{
+
+    background:var(--primary-hover);
+
+    transform:rotate(20deg);
+
+}
+
+#themeToggle:active{
+
+    transform:scale(.95);
+
 }
 
 
 
-/* Dark Mode */
+/* ===========================
+   Headings
+=========================== */
 
-body.dark {
+h2,
+h3{
+
+    margin-top:20px;
+
+    margin-bottom:10px;
+
+}
+
+h3{
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+
+
+/* ===========================
+   Balance
+=========================== */
+
+.balance-box{
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+}
+
+.balance-box h3{
+
+    margin-bottom:8px;
+
+}
+
+#balance{
+
+    font-size:34px;
+
+    margin:0;
+
+    font-weight:700;
+
+}
+
+
+
+/* ===========================
+   Summary Cards
+=========================== */
+
+.summary{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-bottom:25px;
+
+}
+
+.income,
+.expense{
+
+    flex:1;
+
+    text-align:center;
+
+    padding:18px;
+
+    border-radius:12px;
+
+    transition:
+        transform .2s ease;
+
+}
+
+.income:hover,
+.expense:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.income{
+
+    background:var(--success-bg);
+
+    color:var(--success-text);
+
+}
+
+.expense{
+
+    background:var(--danger-bg);
+
+    color:var(--danger-text);
+
+}
+
+.summary h3{
+
+    margin-top:0;
+
+}
+
+.summary p{
+
+    margin:8px 0 0;
+
+    font-size:20px;
+
+    font-weight:600;
+
+}
+
+
+
+/* ===========================
+   Form
+=========================== */
+
+label{
+
+    display:block;
+
+    margin-top:14px;
+
+    margin-bottom:6px;
+
+    font-size:14px;
+
+    font-weight:500;
+
+}
+
+input,
+select{
+
+    width:100%;
+
+    padding:12px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    font-size:15px;
+
+    background:#fff;
+
+    transition:
+        border-color .25s,
+        box-shadow .25s,
+        background .25s;
+textarea{
+
+    width:100%;
+
+}
+}
+
+input:focus,
+select:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+    box-shadow:
+        0 0 0 3px rgba(102,126,234,.25);
+
+}
+
+
+
+/* ===========================
+   Buttons
+=========================== */
+
+button{
+
+    font-family:inherit;
+
+    font-size:15px;
+
+    border:none;
+
+    cursor:pointer;
+
+    transition:
+        background .25s,
+        transform .15s;
+
+}
+
+button:active{
+
+    transform:scale(.97);
+
+}
+
+
+
+/* ===========================
+   Form Buttons
+=========================== */
+
+.form-buttons{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-top:20px;
+
+}
+
+.form-buttons button{
+
+    flex:1;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+.form-buttons button:hover{
+
+    background:var(--primary-hover);
+
+}
+
+.hidden{
+
+    display:none;
+
+}
+
+#cancelEdit{
+
+    background:#777;
+
+}
+
+#cancelEdit:hover{
+
+    background:#5c5c5c;
+
+}
+/* ===========================
+   Transaction List
+=========================== */
+
+ul{
+
+    padding:0;
+
+    margin:0;
+
+}
+
+li{
+
+    list-style:none;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:15px;
+
+    margin:12px 0;
+
+    background:#f8f9fc;
+
+    border-left:5px solid var(--primary);
+
+    border-radius:12px;
+
+    transition:
+        transform .25s,
+        box-shadow .25s,
+        background .3s;
+
+}
+
+li:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 6px 14px rgba(0,0,0,.12);
+
+}
+
+
+
+/* ===========================
+   Transaction Info
+=========================== */
+
+.transaction-info{
+
+    flex:1;
+
+    min-width:0;
+
+    overflow-wrap:anywhere;
+
+}
+
+.transaction-info strong{
+
+    display:block;
+
+    font-size:16px;
+
+    margin-bottom:4px;
+
+}
+
+.transaction-info small{
+
+    color:#666;
+
+    font-size:13px;
+
+    line-height:1.5;
+
+}
+
+
+
+/* ===========================
+   Transaction Actions
+=========================== */
+
+.transaction-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:flex-end;
+
+    gap:8px;
+
+    min-width:130px;
+
+}
+
+.transaction-actions button{
+
+    width:38px;
+
+    height:38px;
+
+    padding:0;
+
+    margin:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:8px;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    font-size:16px;
+
+}
+
+.transaction-actions button:hover{
+
+    background:var(--primary-hover);
+
+}
+
+
+
+/* ===========================
+   Amount Colors
+=========================== */
+
+.plus{
+
+    color:var(--success-text);
+
+    font-weight:700;
+
+    min-width:80px;
+
+    text-align:right;
+
+}
+
+.minus{
+
+    color:var(--danger-text);
+
+    font-weight:700;
+
+    min-width:80px;
+
+    text-align:right;
+
+}
+
+
+
+/* ===========================
+   Delete Button
+=========================== */
+
+.delete-btn{
+
+    background:#dc3545 !important;
+
+}
+
+.delete-btn:hover{
+
+    background:#b02a37 !important;
+
+}
+
+
+
+/* ===========================
+   Filters
+=========================== */
+
+.filters{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    margin-bottom:25px;
+
+}
+
+.filters input,
+.filters select{
+
+    margin:0;
+
+}
+
+
+
+/* ===========================
+   Empty State
+=========================== */
+
+#emptyMessage{
+
+    display:none;
+
+    text-align:center;
+
+    padding:30px 20px;
+
+    margin-bottom:20px;
+
+    border:2px dashed var(--border);
+
+    border-radius:12px;
+
+    background:#fafafa;
+
+    color:#666;
+
+    line-height:1.8;
+
+    font-size:15px;
+
+}
+
+
+
+/* ===========================
+   Chart
+=========================== */
+
+.chart-container{
+
+    margin-top:30px;
+
+}
+
+.chart-wrapper{
+
+    position:relative;
+
+    width:100%;
+
+    height:320px;
+
+}
+
+.chart-wrapper canvas{
+
+    width:100% !important;
+
+    height:100% !important;
+
+}
+
+#chartMessage{
+
+    text-align:center;
+
+    margin-top:15px;
+
+    color:#777;
+
+    font-size:15px;
+
+}
+/* ===========================
+   Dark Mode
+=========================== */
+
+body.dark{
+
+    --card:#1e1e1e;
+
+    --text:#ffffff;
+
+    --border:#555;
 
     background:#121212;
 
 }
 
-
-
-body.dark .container {
-
-    background:#1e1e1e;
-
-    color:white;
-
-}
-
-
-
 body.dark input,
-body.dark select {
+body.dark select{
 
-    background:#333;
+    background:#2b2b2b;
 
-    color:white;
+    color:#ffffff;
 
     border-color:#555;
 
 }
 
+body.dark input::placeholder{
 
+    color:#bdbdbd;
 
-body.dark li {
+}
 
-    background:#333;
+body.dark li{
+
+    background:#2d2d2d;
+
+}
+
+body.dark .transaction-info small{
+
+    color:#cfcfcf;
+
+}
+
+body.dark .income{
+
+    background:#184018;
+
+    color:#9cff9c;
+
+}
+
+body.dark .expense{
+
+    background:#4d1d1d;
+
+    color:#ff9f9f;
+
+}
+
+body.dark #emptyMessage{
+
+    background:#292929;
+
+    color:#d3d3d3;
+
+    border-color:#555;
+
+}
+
+body.dark #chartMessage{
+
+    color:#c8c8c8;
 
 }
 
 
 
-body.dark li small {
+/* ===========================
+   Smooth Theme Transition
+=========================== */
 
-    color:#ccc;
+body,
+.container,
+input,
+select,
+button,
+li,
+.summary,
+.income,
+.expense,
+#emptyMessage{
+
+    transition:
+        background .3s ease,
+        color .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease,
+        transform .2s ease;
+
+}
+
+
+
+/* ===========================
+   Custom Scrollbar
+=========================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#ececec;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary);
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:var(--primary-hover);
 
 }
 
 
 
-body.dark .income {
+/* Firefox */
 
-    background:#183d18;
+html{
+
+    scrollbar-width:thin;
+
+    scrollbar-color:var(--primary) #ececec;
+
+}
+
+
+
+/* ===========================
+   Mobile Responsive
+=========================== */
+
+@media (max-width:500px){
+
+    body{
+
+        padding:15px;
+
+    }
+
+    .container{
+
+        padding:20px;
+
+        border-radius:14px;
+
+    }
+
+    .header{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .header h1{
+
+        font-size:24px;
+
+    }
+
+    .summary{
+
+        flex-direction:column;
+
+    }
+
+    .income,
+    .expense{
+
+        width:100%;
+
+    }
+
+    .transaction-actions{
+
+        min-width:auto;
+
+        flex-direction:column;
+
+        align-items:flex-end;
+
+    }
+
+    .transaction-actions button{
+
+        width:36px;
+
+        height:36px;
+
+    }
+
+    .plus,
+    .minus{
+
+        min-width:unset;
+
+    }
+
+    .chart-wrapper{
+
+        height:260px;
+
+    }
 
 }
 
 
 
-body.dark .expense {
+/* ===========================
+   Small Phones
+=========================== */
 
-    background:#4a1f1f;
+@media (max-width:360px){
+
+    .header h1{
+
+        font-size:20px;
+
+    }
+
+    input,
+    select,
+    button{
+
+        font-size:14px;
+
+    }
 
 }
-body.dark h3,
-body.dark h1 {
 
-    color:white;
+
+
+/* ===========================
+   Accessibility
+=========================== */
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible{
+
+    outline:3px solid rgba(102,126,234,.4);
+
+    outline-offset:2px;
 
 }
+
+
+
+/* ===========================
+   Reduced Motion
+=========================== */
+
+@media (prefers-reduced-motion:reduce){
+
+    *{
+
+        animation:none !important;
+
+        transition:none !important;
+
+        scroll-behavior:auto !important;
+
+    }
+
+}
+
+
+
+/* ===========================
+   End of File
+=========================== */

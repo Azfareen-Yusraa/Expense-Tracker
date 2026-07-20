@@ -8,11 +8,17 @@
 
     <title>Expense Tracker</title>
 
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.png">
+
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
 
     <link rel="stylesheet" href="style.css">
 
@@ -20,23 +26,33 @@
 
 <body>
 
-<div class="container">
+<main class="container">
 
     <!-- Header -->
 
-    <div class="header">
+    <header class="header">
 
-        <h1>💰 Expense Tracker</h1>
+        <h1>
+            💰 Expense Tracker
+        </h1>
 
-        <button id="themeToggle" title="Toggle Theme">
+        <button
+            id="themeToggle"
+            type="button"
+            title="Toggle Theme"
+            aria-label="Toggle Dark Mode">
+
             🌙
+
         </button>
 
-    </div>
+    </header>
+
+
 
     <!-- Balance -->
 
-    <div class="balance-box">
+    <section class="balance-box">
 
         <h3>Your Balance</h3>
 
@@ -44,11 +60,13 @@
             ₹0
         </h2>
 
-    </div>
+    </section>
+
+
 
     <!-- Summary -->
 
-    <div class="summary">
+    <section class="summary">
 
         <div class="income">
 
@@ -70,180 +88,259 @@
 
         </div>
 
-    </div>
+    </section>
 
-    <!-- Form -->
 
-    <h3>Add Transaction</h3>
 
-    <form id="transactionForm">
+    <!-- Add Transaction -->
 
-        <label for="text">
-            Description
-        </label>
+    <section>
 
-        <input
-            type="text"
-            id="text"
-            placeholder="Enter description"
-            required>
+        <h3>Add Transaction</h3>
 
-        <label for="amount">
-            Amount
-        </label>
+        <form id="transactionForm">
 
-        <input
-            type="number"
-            id="amount"
-            min="1"
-            step="0.01"
-            placeholder="Enter amount"
-            required>
+            <label for="text">
+                Description
+            </label>
 
-        <label for="type">
-            Transaction Type
-        </label>
+            <input
+                type="text"
+                id="text"
+                placeholder="Enter description"
+                autocomplete="off"
+                required
+            >
 
-        <select id="type">
+            <label for="amount">
+                Amount
+            </label>
 
-            <option value="expense">
-                💸 Expense
-            </option>
+            <input
+                type="number"
+                id="amount"
+                min="1"
+                step="0.01"
+                placeholder="Enter amount"
+                required
+            >
 
-            <option value="income">
-                💰 Income
-            </option>
+            <label for="type">
+                Transaction Type
+            </label>
 
-        </select>
+            <select
+                id="type"
+                required
+            >
 
-        <label for="category">
-            Category
-        </label>
+                <option value="expense">
+                    💸 Expense
+                </option>
 
-        <select id="category">
+                <option value="income">
+                    💰 Income
+                </option>
 
-            <option value="Food">🍔 Food</option>
+            </select>
 
-            <option value="Travel">🚗 Travel</option>
+            <label for="category">
+                Category
+            </label>
 
-            <option value="Shopping">🛒 Shopping</option>
+            <select
+                id="category"
+                required
+            >
 
-            <option value="Bills">💡 Bills</option>
+                <option value="Food">
+                    🍔 Food
+                </option>
 
-            <option value="Entertainment">🎬 Entertainment</option>
+                <option value="Travel">
+                    🚗 Travel
+                </option>
 
-            <option value="Other">📦 Other</option>
+                <option value="Shopping">
+                    🛒 Shopping
+                </option>
 
-        </select>
+                <option value="Bills">
+                    💡 Bills
+                </option>
 
-        <label for="date">
-            Date
-        </label>
+                <option value="Entertainment">
+                    🎬 Entertainment
+                </option>
 
-        <input
-            type="date"
-            id="date"
-            required>
+                <option value="Other">
+                    📦 Other
+                </option>
 
-        <div class="form-buttons">
+            </select>
 
-            <button
-                type="submit"
-                id="submitButton">
+            <label for="date">
+                Date
+            </label>
 
-                Add Transaction
+            <input
+                type="date"
+                id="date"
+                required
+            >
 
-            </button>
+            <div class="form-buttons">
 
-            <button
-                type="button"
-                id="cancelEdit"
-                style="display:none;">
+                <button
+                    type="submit"
+                    id="submitButton">
 
-                Cancel
+                    Add Transaction
 
-            </button>
+                </button>
+
+                <button
+                    type="button"
+                    id="cancelEdit"
+                    class="hidden">
+
+                    Cancel
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+
+    <!-- Transaction History -->
+
+    <section>
+
+        <h3>Transaction History</h3>
+
+        <!-- Filters -->
+
+        <section
+            class="filters"
+            aria-label="Transaction Filters">
+
+            <input
+                type="text"
+                id="search"
+                placeholder="🔍 Search transaction"
+                autocomplete="off"
+            >
+
+            <select id="filterType">
+
+                <option value="all">
+                    All Types
+                </option>
+
+                <option value="income">
+                    💰 Income
+                </option>
+
+                <option value="expense">
+                    💸 Expense
+                </option>
+
+            </select>
+
+            <select id="filterCategory">
+
+                <option value="all">
+                    All Categories
+                </option>
+
+                <option value="Food">
+                    🍔 Food
+                </option>
+
+                <option value="Travel">
+                    🚗 Travel
+                </option>
+
+                <option value="Shopping">
+                    🛒 Shopping
+                </option>
+
+                <option value="Bills">
+                    💡 Bills
+                </option>
+
+                <option value="Entertainment">
+                    🎬 Entertainment
+                </option>
+
+                <option value="Other">
+                    📦 Other
+                </option>
+
+            </select>
+
+        </section>
+
+
+
+        <!-- Empty State -->
+
+        <p id="emptyMessage">
+
+            📂 No transactions yet.
+            <br>
+            Start by adding your first transaction.
+
+        </p>
+
+        <ul id="list"></ul>
+
+    </section>
+
+
+
+    <!-- Expense Chart -->
+
+    <section class="chart-container">
+
+        <h3>
+            Expense Analysis
+        </h3>
+
+        <div class="chart-wrapper">
+
+            <canvas id="expenseChart">
+
+                Your browser does not support charts.
+
+            </canvas>
 
         </div>
 
-    </form>
+        <p
+            id="chartMessage"
+            class="hidden">
 
-    <!-- History -->
+            📊 Add an expense to view the chart.
 
-    <h3>Transaction History</h3>
+        </p>
 
-    <div class="filters">
+    </section>
 
-        <input
-            type="text"
-            id="search"
-            placeholder="🔍 Search transaction">
+</main>
 
-        <select id="filterType">
-
-            <option value="all">
-                All Types
-            </option>
-
-            <option value="income">
-                💰 Income
-            </option>
-
-            <option value="expense">
-                💸 Expense
-            </option>
-
-        </select>
-
-        <select id="filterCategory">
-
-            <option value="all">
-                All Categories
-            </option>
-
-            <option value="Food">🍔 Food</option>
-
-            <option value="Travel">🚗 Travel</option>
-
-            <option value="Shopping">🛒 Shopping</option>
-
-            <option value="Bills">💡 Bills</option>
-
-            <option value="Entertainment">🎬 Entertainment</option>
-
-            <option value="Other">📦 Other</option>
-
-        </select>
-
-    </div>
-
-    <!-- Empty State -->
-
-    <p id="emptyMessage">
-
-        📂 No transactions yet.<br>
-
-        Start by adding your first transaction.
-
-    </p>
-
-    <ul id="list"></ul>
-
-    <!-- Chart -->
-
-    <div class="chart-container">
-
-        <h3>Expense Analysis</h3>
-
-        <canvas id="expenseChart"></canvas>
-
-    </div>
-
-</div>
+<!-- Chart.js -->
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Main JavaScript -->
 
 <script src="script.js"></script>
 
 </body>
+
 </html>
