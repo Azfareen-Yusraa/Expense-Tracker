@@ -230,6 +230,16 @@ li {
 
     gap: 10px;
 
+    transition: all 0.25s ease;
+
+}
+
+li:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+
 }
 
 .transaction-info {
@@ -341,7 +351,41 @@ canvas {
     margin-bottom: 20px;
 
 }
+/* Empty State */
 
+#emptyMessage {
+
+    display: none;
+
+    text-align: center;
+
+    padding: 25px;
+
+    margin-bottom: 20px;
+
+    border: 2px dashed #ddd;
+
+    border-radius: 10px;
+
+    background: #fafafa;
+
+    color: #666;
+
+    line-height: 1.8;
+
+    font-size: 15px;
+
+}
+
+body.dark #emptyMessage {
+
+    background: #2b2b2b;
+
+    border-color: #555;
+
+    color: #ccc;
+
+}
 .filters input,
 .filters select {
 

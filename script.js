@@ -181,7 +181,16 @@ function displayTransactions() {
         return matchesSearch && matchesType && matchesCategory;
 
     });
+if(filteredTransactions.length === 0){
 
+    emptyMessage.style.display = "block";
+
+}
+else{
+
+    emptyMessage.style.display = "none";
+
+}
     filteredTransactions.forEach(transaction => {
 
         const li = document.createElement("li");
