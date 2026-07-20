@@ -8,30 +8,33 @@
 
     <title>Expense Tracker</title>
 
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 
 </head>
 
-
 <body>
-
 
 <div class="container">
 
+    <!-- Header -->
 
     <div class="header">
 
-    <h1>💰 Expense Tracker</h1>
+        <h1>💰 Expense Tracker</h1>
 
-    <button id="themeToggle">
-        🌙
-    </button>
+        <button id="themeToggle" title="Toggle Theme">
+            🌙
+        </button>
 
-</div>
+    </div>
 
-
-
-    <!-- Balance Section -->
+    <!-- Balance -->
 
     <div class="balance-box">
 
@@ -43,12 +46,9 @@
 
     </div>
 
-
-
-    <!-- Income Expense Summary -->
+    <!-- Summary -->
 
     <div class="summary">
-
 
         <div class="income">
 
@@ -60,8 +60,6 @@
 
         </div>
 
-
-
         <div class="expense">
 
             <h3>Expense</h3>
@@ -72,232 +70,180 @@
 
         </div>
 
-
     </div>
 
-
-
-
-    <!-- Add Transaction -->
+    <!-- Form -->
 
     <h3>Add Transaction</h3>
 
-
     <form id="transactionForm">
 
+        <label for="text">
+            Description
+        </label>
 
         <input
-        type="text"
-        id="text"
-        placeholder="Enter description"
-        required>
+            type="text"
+            id="text"
+            placeholder="Enter description"
+            required>
 
-
+        <label for="amount">
+            Amount
+        </label>
 
         <input
-type="number"
-id="amount"
-placeholder="Enter amount"
-required>
+            type="number"
+            id="amount"
+            min="1"
+            step="0.01"
+            placeholder="Enter amount"
+            required>
 
+        <label for="type">
+            Transaction Type
+        </label>
 
+        <select id="type">
 
-<select id="type">
-
-
-    <option value="expense">
-        💸 Expense
-    </option>
-
-
-    <option value="income">
-        💰 Income
-    </option>
-
-
-</select>
-
-
-
-        <select id="category">
-
-
-            <option value="Food">
-                🍔 Food
+            <option value="expense">
+                💸 Expense
             </option>
 
-
-            <option value="Travel">
-                🚗 Travel
+            <option value="income">
+                💰 Income
             </option>
-
-
-            <option value="Shopping">
-                🛒 Shopping
-            </option>
-
-
-            <option value="Bills">
-                💡 Bills
-            </option>
-
-
-            <option value="Entertainment">
-                🎬 Entertainment
-            </option>
-
-
-            <option value="Other">
-                📦 Other
-            </option>
-
 
         </select>
 
+        <label for="category">
+            Category
+        </label>
 
+        <select id="category">
 
+            <option value="Food">🍔 Food</option>
+
+            <option value="Travel">🚗 Travel</option>
+
+            <option value="Shopping">🛒 Shopping</option>
+
+            <option value="Bills">💡 Bills</option>
+
+            <option value="Entertainment">🎬 Entertainment</option>
+
+            <option value="Other">📦 Other</option>
+
+        </select>
+
+        <label for="date">
+            Date
+        </label>
 
         <input
-        type="date"
-        id="date"
-        required>
+            type="date"
+            id="date"
+            required>
 
+        <div class="form-buttons">
 
+            <button
+                type="submit"
+                id="submitButton">
 
+                Add Transaction
 
-        <button type="submit">
-            Add Transaction
-        </button>
+            </button>
 
+            <button
+                type="button"
+                id="cancelEdit"
+                style="display:none;">
+
+                Cancel
+
+            </button>
+
+        </div>
 
     </form>
 
+    <!-- History -->
 
+    <h3>Transaction History</h3>
 
+    <div class="filters">
 
+        <input
+            type="text"
+            id="search"
+            placeholder="🔍 Search transaction">
 
-    <!-- Transaction History -->
+        <select id="filterType">
 
+            <option value="all">
+                All Types
+            </option>
 
-    <!-- Transaction History -->
+            <option value="income">
+                💰 Income
+            </option>
 
-<h3>
-    Transaction History
-</h3>
+            <option value="expense">
+                💸 Expense
+            </option>
 
+        </select>
 
-<div class="filters">
+        <select id="filterCategory">
 
+            <option value="all">
+                All Categories
+            </option>
 
-<input 
-type="text"
-id="search"
-placeholder="🔎 Search transaction">
+            <option value="Food">🍔 Food</option>
 
+            <option value="Travel">🚗 Travel</option>
 
+            <option value="Shopping">🛒 Shopping</option>
 
-<select id="filterType">
+            <option value="Bills">💡 Bills</option>
 
-<option value="all">
-All Types
-</option>
+            <option value="Entertainment">🎬 Entertainment</option>
 
+            <option value="Other">📦 Other</option>
 
-<option value="income">
-💰 Income
-</option>
-
-
-<option value="expense">
-💸 Expense
-</option>
-
-
-</select>
-
-
-
-<select id="filterCategory">
-
-
-<option value="all">
-All Categories
-</option>
-
-
-<option value="Food">
-🍔 Food
-</option>
-
-
-<option value="Travel">
-🚗 Travel
-</option>
-
-
-<option value="Shopping">
-🛒 Shopping
-</option>
-
-
-<option value="Bills">
-💡 Bills
-</option>
-
-
-<option value="Entertainment">
-🎬 Entertainment
-</option>
-
-
-<option value="Other">
-📦 Other
-</option>
-
-
-</select>
-
-
-</div>
-
-
-
-<ul id="list">
-
-</ul>
-
-    <!-- Chart Section -->
-
-
-    <div class="chart-container">
-
-
-        <h3>
-            Expense Analysis
-        </h3>
-
-
-        <canvas id="expenseChart"></canvas>
-
+        </select>
 
     </div>
 
+    <!-- Empty State -->
 
+    <p id="emptyMessage">
 
+        📂 No transactions yet.<br>
+
+        Start by adding your first transaction.
+
+    </p>
+
+    <ul id="list"></ul>
+
+    <!-- Chart -->
+
+    <div class="chart-container">
+
+        <h3>Expense Analysis</h3>
+
+        <canvas id="expenseChart"></canvas>
+
+    </div>
 
 </div>
 
-
-
-
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 
 <script src="script.js"></script>
 
-
 </body>
-
-
 </html>

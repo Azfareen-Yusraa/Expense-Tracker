@@ -348,7 +348,33 @@ canvas {
     margin: 0;
 
 }
+.form-buttons {
 
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 10px;
+
+}
+
+.form-buttons button {
+
+    flex: 1;
+
+}
+
+#cancelEdit {
+
+    background: #888;
+
+}
+
+#cancelEdit:hover {
+
+    background: #666;
+
+}
 /* Mobile Responsive */
 
 @media(max-width:500px) {

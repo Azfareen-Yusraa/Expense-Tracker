@@ -27,11 +27,13 @@ const filterType = document.getElementById("filterType");
 const filterCategory = document.getElementById("filterCategory");
 
 const transactionForm = document.getElementById("transactionForm");
+const submitButton = document.getElementById("submitButton");
 
+const cancelEdit = document.getElementById("cancelEdit");
 
 let expenseChart;
 
-
+let editingTransactionId = null;
 
 let transactions =
 JSON.parse(localStorage.getItem("transactions")) || [];
@@ -104,7 +106,31 @@ const transaction = {
 };
 
 
+    if (editingTransactionId !== null) {
+
+    const index = transactions.findIndex(
+        transaction => transaction.id === editingTransactionId
+    );
+
+    transactions[index] = {
+
+        ...transaction,
+
+        id: editingTransactionId
+
+    };
+
+    editingTransactionId = null;
+
+submitButton.textContent = "Add Transaction";
+
+cancelEdit.style.display = "none";
+}
+else {
+
     transactions.push(transaction);
+
+}
 
 
 
@@ -192,11 +218,17 @@ function displayTransactions() {
 
             </span>
 
-            <button onclick="deleteTransaction(${transaction.id})">
+            <button onclick="editTransaction(${transaction.id})">
 
-                X
+    ✏️
 
-            </button>
+</button>
+
+<button onclick="deleteTransaction(${transaction.id})">
+
+    🗑️
+
+</button>
 
         </div>
 
@@ -309,7 +341,31 @@ function deleteTransaction(id){
 
 }
 
+function editTransaction(id) {
 
+    const transaction = transactions.find(
+        transaction => transaction.id === id
+    );
+
+    if (!transaction) return;
+
+    text.value = transaction.text;
+
+    amount.value = Math.abs(transaction.amount);
+
+    type.value = transaction.type;
+
+    category.value = transaction.category;
+
+    date.value = transaction.date;
+
+    editingTransactionId = id;
+
+    submitButton.textContent = "Update Transaction";
+
+cancelEdit.style.display = "block";
+
+}
 
 
 
@@ -578,3 +634,20 @@ search.addEventListener("input", displayTransactions);
 filterType.addEventListener("change", displayTransactions);
 
 filterCategory.addEventListener("change", displayTransactions);
+// Cancel Edit
+
+cancelEdit.addEventListener("click", () => {
+
+    editingTransactionId = null;
+
+    transactionForm.reset();
+
+    category.value = "Food";
+
+    type.value = "expense";
+
+    submitButton.textContent = "Add Transaction";
+
+    cancelEdit.style.display = "none";
+
+});
