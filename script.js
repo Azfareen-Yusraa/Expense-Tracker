@@ -214,7 +214,7 @@ function displayTransactions() {
 
             <span class="${transaction.amount > 0 ? "plus" : "minus"}">
 
-                ₹${Math.abs(transaction.amount)}
+                ${formatCurrency(Math.abs(transaction.amount))}
 
             </span>
 
@@ -245,13 +245,22 @@ function displayTransactions() {
 }
 
 
-
-
-
-
-
 // Update Balance Summary
+function formatCurrency(value) {
 
+    return new Intl.NumberFormat("en-IN", {
+
+        style: "currency",
+
+        currency: "INR",
+
+        minimumFractionDigits: 2,
+
+        maximumFractionDigits: 2
+
+    }).format(value);
+
+}
 function updateSummary(){
 
 
@@ -296,17 +305,13 @@ function updateSummary(){
 
 
     balance.innerText =
-    `₹${total}`;
+formatCurrency(total);
 
+income.innerText =
+formatCurrency(totalIncome);
 
-
-    income.innerText =
-    `₹${totalIncome}`;
-
-
-
-    expense.innerText =
-    `₹${Math.abs(totalExpense)}`;
+expense.innerText =
+formatCurrency(Math.abs(totalExpense));
 
 
 }
