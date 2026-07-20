@@ -4,6 +4,18 @@ A modern and responsive **Expense Tracker** built using **HTML, CSS, and JavaScr
 
 ---
 
+## 🌟 Highlights
+
+- 💰 Add, Edit & Delete Transactions
+- 🔍 Search & Filter Transactions
+- 🌙 Dark Mode with Theme Persistence
+- 📊 Interactive Expense Analysis using Chart.js
+- 💾 Local Storage Support
+- 📱 Fully Responsive Design
+- ♿ Accessibility Improvements
+
+---
+
 ## 📸 Screenshots
 
 ### Home
@@ -25,9 +37,7 @@ A modern and responsive **Expense Tracker** built using **HTML, CSS, and JavaScr
 
 ## 🚀 Live Demo
 
-**GitHub Pages:**
-
-https://azfareen-yusraa.github.io/Expense-Tracker/
+👉 **[View Live Demo](https://azfareen-yusraa.github.io/Expense-Tracker/)**
 
 ---
 
@@ -74,8 +84,10 @@ Expense-Tracker/
 ├── README.md
 │
 └── images/
-    ├── favicon.png
-    └── screenshot.png
+├── home.png
+├── dark-mode.png
+├── search-filter.png
+├── chart.png
 ```
 
 ---
@@ -187,11 +199,9 @@ Feel free to fork this repository and create a pull request.
 
 **Yusraa Azfareen**
 
-GitHub:
-https://github.com/Azfareen-Yusraa
+GitHub: [Azfareen-Yusraa](https://github.com/Azfareen-Yusraa)
 
-LinkedIn:
-https://www.linkedin.com/in/yusraa-azfareen/
+LinkedIn: [Yusraa Azfareen](https://www.linkedin.com/in/yusraa-azfareen/)
 
 ---
 
@@ -200,3 +210,7 @@ https://www.linkedin.com/in/yusraa-azfareen/
 If you found this project helpful, consider giving it a ⭐ on GitHub.
 
 It helps others discover the project and motivates future improvements.
+
+## 📄 License
+
+This project is licensed under the MIT License.
